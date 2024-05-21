@@ -18,7 +18,11 @@ def print_manual():
 
 class CustomArgumentParser(argparse.ArgumentParser):
     def error(self, message):
-        sys.stderr.write(f'error: {message}\n')
+        if 'unrecognized arguments' in message:
+            sys.stderr.write(f'error: {message}\n')
+            sys.stderr.write('Please check the arguments you provided. Use --help for usage information.\n')
+        else:
+            sys.stderr.write(f'error: {message}\n')
         self.print_help()
         sys.exit(2)
 
