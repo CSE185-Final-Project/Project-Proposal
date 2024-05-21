@@ -13,7 +13,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'run_pipeline=scripts.run_pipeline:main',
+            'scRNAseq_Easy=scripts.scRNAseq_Easy:main',
         ],
     },
 )
