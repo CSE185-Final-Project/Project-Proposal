@@ -1,0 +1,13 @@
+Usage: run_pipeline [options] <group1_zip> <group2_zip> -o <output_path>
+
+Options:
+  -o, --output    Path to save the output graph.
+
+Description:
+  This program processes gene result files from two groups, performs analysis,
+  and generates visualizations. The input files should be provided as ZIP files
+  containing .gene.results files.
+
+Examples:
+  run_pipeline path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png
+  run_pipeline help  # Prints this manual
