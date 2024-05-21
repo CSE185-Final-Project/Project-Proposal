@@ -21,6 +21,7 @@ def main():
     parser.add_argument('group1_zip', type=str, nargs='?', help='Path to the first zip file.')
     parser.add_argument('group2_zip', type=str, nargs='?', help='Path to the second zip file.')
     parser.add_argument('-o', '--output', type=str, help='Path to save the output graph.')
+    parser.add_argument('-v', '--visual', type=str, help='Whether to visualize the valcano plot')
     
     # Parse the arguments
     args = parser.parse_args()
@@ -47,7 +48,8 @@ def main():
     # processed_data2 = dp.process_files(extract_dir2)
 
     # # Pass processed data and output path to the R script
-    # dp.run_r_script(processed_data1, processed_data2, args.output)
+    if(args.output == "True"):
+        dp.run_r_script("hello", "world", "nihao")
 
 if __name__ == "__main__":
     main()
