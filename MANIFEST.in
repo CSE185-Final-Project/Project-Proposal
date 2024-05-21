@@ -1,0 +1,2 @@
+include docs/manual.txt
+include scripts/data_vis.R
