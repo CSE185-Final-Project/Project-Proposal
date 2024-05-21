@@ -3,6 +3,7 @@ import os
 import subprocess
 import argparse
 import sys
+from pkg_resources import resource_filename
 import packages.R_prep as dp
 
 def unzip_files(zip_file, extract_to):
@@ -10,7 +11,7 @@ def unzip_files(zip_file, extract_to):
         zip_ref.extractall(extract_to)
 
 def print_manual():
-    manual_path = os.path.join(os.path.dirname(__file__), '..', 'docs', 'manual.txt')
+    manual_path = resource_filename(__name__, '../docs/manual.txt')
     with open(manual_path, 'r') as f:
         manual_content = f.read()
     print(manual_content)
