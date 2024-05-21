@@ -1,7 +1,12 @@
-#
 # mypileup (CSE 185 Project Demo)
 
-# Install instructions
+# Installation instructions
 
-# Basic usage
-#
+# Basic usage instructions
+
+# Complete usage instructions
+
+# Credits
+
+# Bonus: badges
+
