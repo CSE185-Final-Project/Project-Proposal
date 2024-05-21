@@ -21,7 +21,7 @@ def main():
     parser.add_argument('group1_zip', type=str, nargs='?', help='Path to the first zip file.')
     parser.add_argument('group2_zip', type=str, nargs='?', help='Path to the second zip file.')
     parser.add_argument('-o', '--output', type=str, help='Path to save the output graph.')
-    parser.add_argument('-v', '--visual', type=str, help='Whether to visualize the valcano plot')
+    parser.add_argument('-v', '--visual', action='store_true', help='Run visualization if set to True.')
     
     # Parse the arguments
     args = parser.parse_args()
@@ -48,8 +48,11 @@ def main():
     # processed_data2 = dp.process_files(extract_dir2)
 
     # # Pass processed data and output path to the R script
-    if(args.output == "True"):
-        dp.run_r_script("hello", "world", "nihao")
+    if args.visual:
+        r_script_path = resource_filename(__name__, '../scripts/data_vis.R')
+        dp.run_r_script("processed_data1", "processed_data2", "args.output", r_script_path)
+    else:
+        print("Visualization is skipped as -v or --visual flag is not set.")
 
 if __name__ == "__main__":
     main()
