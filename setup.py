@@ -6,7 +6,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     package_data={
-        '': ['docs/manual.txt', 'scripts/my_r_script.R'],
+        '': ['docs/manual.txt', 'scripts/data_vis.R'],
     },
     install_requires=[
         'pandas',
