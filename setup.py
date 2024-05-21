@@ -9,7 +9,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'scRNAseq=scripts.scRNAseq:main',
+            'scRNAseq=scripts.scRNAseq_Easy:main',
         ],
     },
 )
