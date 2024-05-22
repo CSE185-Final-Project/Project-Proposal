@@ -3,6 +3,7 @@ import os
 import subprocess
 import argparse
 import sys
+import json
 from pkg_resources import resource_filename
 import packages.R_prep as dp
 
@@ -35,22 +36,17 @@ def main():
         print_manual()
         return
 
-    # # Paths to the extraction directories
-    # extract_dir1 = '/tmp/extracted_group1'
-    # extract_dir2 = '/tmp/extracted_group2'
+    # TODO
     
-    # # Unzip the files
-    # unzip_files(args.group1_zip, extract_dir1)
-    # unzip_files(args.group2_zip, extract_dir2)
+    group_1 = []
+    group_1_R = json.dumps(group_1)
+    group_2 = []
+    group_2_R = json.dumps(group_2)
 
-    # # Process the files
-    # processed_data1 = dp.process_files(extract_dir1)
-    # processed_data2 = dp.process_files(extract_dir2)
-
-    # # Pass processed data and output path to the R script
+    #  Pass processed data and output path to the R script
     if args.visual:
         r_script_path = resource_filename(__name__, '../scripts/data_vis.R')
-        dp.run_r_script("processed_data1", "processed_data2", "args.output", r_script_path)
+        dp.run_r_script(group_1_R, group_2_R, args.output, r_script_path)
     else:
         print("Visualization is skipped as -v or --visual flag is not set.")
 
