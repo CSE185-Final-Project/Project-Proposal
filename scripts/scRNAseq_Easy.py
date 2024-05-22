@@ -16,36 +16,6 @@ def print_manual():
         manual_content = f.read()
     print(manual_content)
 
-class CustomArgumentParser(argparse.ArgumentParser):
-    def error(self, message):
-        if 'unrecognized arguments' in message:
-            sys.stderr.write(f'error: {message}\n')
-            sys.stderr.write('Please check the arguments you provided. Use --help for usage information.\n')
-        else:
-            sys.stderr.write(f'error: {message}\n')
-        self.print_help()
-        sys.exit(2)
-
-    def format_help(self):
-        # Custom help message
-        help_text = """
-        Custom Usage: run_pipeline [options] <group1_zip> <group2_zip> -o <output_path>
-
-        Options:
-        -o, --output    Path to save the output graph.
-        -v, --visual    Run visualization if set.
-
-        Description:
-        This program processes gene result files from two groups, performs analysis,
-        and generates visualizations. The input files should be provided as ZIP files
-        containing .gene.results files.
-
-        Examples:
-        run_pipeline path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png
-        run_pipeline help  # Prints this manual
-        """
-        return help_text
-
 def main():
     parser = argparse.ArgumentParser(description="Process gene result files and generate visualizations.")
     parser.add_argument('group1_zip', type=str, nargs='?', help='Path to the first zip file.')
