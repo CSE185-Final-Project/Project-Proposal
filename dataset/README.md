@@ -1,5 +1,5 @@
 # Datasets One
-Datasets come from Lab 4, provided by Professor Gymrek. They are derived from the research paper titled "**High fat diet-induced changes of mouse hepatic transcription and enhancer activity can be reversed by subsequent weight loss**". The datasets have been preprocessed using STAR and RSEM by Professor Gymrek.
+Datasets come from Lab 4, provided by Professor Gymrek. They are derived from the research paper titled "**High fat diet-induced changes of mouse hepatic transcription and enhancer activity can be reversed by subsequent weight loss**". The datasets have been preprocessed using STAR and RSEM by Professor Gymrek. DOI: 10.1038/srep40220
 
 ## Data Files
 - **Chow Diet Samples**
@@ -14,7 +14,7 @@ Datasets come from Lab 4, provided by Professor Gymrek. They are derived from th
   * GRCm38.75.gene_names
 
 # Datasets Two
-The second datasets come from "**Global Transcriptome Analysis of Brown Adipose Tissue of Diet-Induced Obese Mice**". These are accessible through GEO accession number GSE112740.
+The second datasets come from "**Global Transcriptome Analysis of Brown Adipose Tissue of Diet-Induced Obese Mice**". These are accessible through GEO accession number GSE112740. DOI: 10.3390/ijms19041095s
 
 ## Data Files
 - **High Fat Diet (HFD) Samples**
