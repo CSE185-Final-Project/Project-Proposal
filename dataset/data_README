@@ -1,0 +1,11 @@
+This dataset is sourced from the study titled "Global Transcriptome Analysis of Brown Adipose Tissue of Diet-Induced Obese Mice," published with the DOI: 10.3390/ijms19041095.
+The data is accessible through the GEO accession number GSE112740 and includes the following samples:
+GSM3082780: HFD BAT 1
+GSM3082781: HFD BAT 2
+GSM3082782: HFD BAT 3
+GSM3082783: LFD BAT 1
+GSM3082784: LFD BAT 2
+GSM3082785: LFD BAT 3
+
+HFD : High fat diet, LFD: Low fat diet.
+All the above files are files that alrady done with STAR and RSEM. They are the results of RSEM.
