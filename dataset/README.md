@@ -18,10 +18,10 @@ The second datasets come from "**Global Transcriptome Analysis of Brown Adipose 
 
 ## Data Files
 - **High Fat Diet (HFD) Samples**
-  * GSM3082780: HFD BAT 1
-  * GSM3082781: HFD BAT 2
-  * GSM3082782: HFD BAT 3
+  * GSM3082780: HFD_BAT1.RSEM.results
+  * GSM3082781: HFD_BAT2.RSEM.results
+  * GSM3082782: HFD_BAT3.RSEM.results
 - **Low Fat Diet (LFD) Samples**
-  * GSM3082783: LFD BAT 1
-  * GSM3082784: LFD BAT 2
-  * GSM3082785: LFD BAT 3
+  * GSM3082783: LFD_BAT1.RSEM.results
+  * GSM3082784: LFD_BAT2.RSEM.results
+  * GSM3082785: LFD_BAT3.RSEM.results
