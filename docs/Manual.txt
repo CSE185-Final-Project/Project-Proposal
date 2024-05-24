@@ -8,10 +8,9 @@ Options:
 -v, --visual   Optional. If set, runs visualization of the correlation among datasets if set to True.
 
 Description:
-  This program processes gene result files after running RSEM from two groups. 
-It will performs analysis, generates visualizations of the correlation of same type of sample datasets if user specified,
-and output the volcano plot.
-  The input files should be provided as ZIP files. All files inside the ZIP file should end with '.results'.
+This program processes gene result files after running RSEM from two groups. 
+It will performs analysis, generates visualizations of the correlation of same type of sample datasets if user specified, and output the volcano plot.
+The input files should be provided as ZIP files. All files inside the ZIP file should end with '.results'.
 
 Examples:
 Without Visualization (Processes two groups by only generating the volcano plot):
