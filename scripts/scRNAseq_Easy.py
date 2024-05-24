@@ -8,6 +8,7 @@ from pkg_resources import resource_filename
 import packages.R_prep as dp
 import sanity_check
 
+
 # this method unzip file into a new directory
 def unzip_files(zip_file, extract_to_new_dir):
 
@@ -29,10 +30,10 @@ def print_manual():
 
 def main():
     parser = argparse.ArgumentParser(description="Process gene result files and generate visualizations.")
-    parser.add_argument('group1_zip', type=str, nargs='?', help='Path to the first zip file.')
-    parser.add_argument('group2_zip', type=str, nargs='?', help='Path to the second zip file.')
+    parser.add_argument('group1_zip', type=str, help='Path to the first zip file.')
+    parser.add_argument('group2_zip', type=str, help='Path to the second zip file.')
     parser.add_argument('-o', '--output', type=str, help='Path to save the output graph.')
-    parser.add_argument('-v', '--visual', action='store_true', help='Run visualization if set to True.')
+    parser.add_argument('-v', '--visual', action='store_true', help='Run visualization of correlation if set to True.')
     
     # Parse the arguments
     args = parser.parse_args()
@@ -49,8 +50,8 @@ def main():
     #-------------------------sanity_check (zhqian)---------------------------#
 
     # check if the first zip file and the second zip file has the same amount of files
-    zip_file_path_1 = sys.argv[1]
-    zip_file_path_2 = sys.argv[2]
+    zip_file_path_1 = args.group1_zip
+    zip_file_path_2 = args.group2_zip
     zip_file_1_file_count = sanity_check.check_files_amount(zip_file_path_1)
     zip_file_2_file_count = sanity_check.check_files_amount(zip_file_path_2)
 
@@ -69,8 +70,10 @@ def main():
     csv_files_list_1 = sanity_check.convert_files_to_csv(source_path1, df_dir_name="dataframe_home")
     csv_files_list_2 = sanity_check.convert_files_to_csv(source_path2, df_dir_name="dataframe_home")
 
+
     #-------------------------------------------------------------------------#
-    
+
+
     group_1 = []
     group_1_R = json.dumps(group_1)
     group_2 = []
