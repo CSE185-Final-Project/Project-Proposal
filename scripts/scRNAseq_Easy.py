@@ -6,10 +6,20 @@ import sys
 import json
 from pkg_resources import resource_filename
 import packages.R_prep as dp
+import sanity_check
 
-def unzip_files(zip_file, extract_to):
+# this method unzip file into a new directory
+def unzip_files(zip_file, extract_to_new_dir):
+
+    # convert to abosolute path
+    abs_path = os.path.abspath(extract_to_new_dir)
+
+    # makesure the directory exists / create it
+    os.makedirs(abs_path, exist_ok=True)
+
     with zipfile.ZipFile(zip_file, 'r') as zip_ref:
-        zip_ref.extractall(extract_to)
+        zip_ref.extractall(abs_path)
+    return abs_path
 
 def print_manual():
     manual_path = resource_filename(__name__, '../docs/manual.txt')
@@ -36,7 +46,30 @@ def main():
         print_manual()
         return
 
-    # TODO
+    #-------------------------sanity_check (zhqian)---------------------------#
+
+    # check if the first zip file and the second zip file has the same amount of files
+    zip_file_path_1 = sys.argv[1]
+    zip_file_path_2 = sys.argv[2]
+    zip_file_1_file_count = sanity_check.check_files_amount(zip_file_path_1)
+    zip_file_2_file_count = sanity_check.check_files_amount(zip_file_path_2)
+
+    # if there are not the same amount of files in zip file path, then end the program
+    if not sanity_check.check_if_same_amount_of_files(zip_file_1_file_count, zip_file_2_file_count):
+        return
+    
+    # unzip two input zip_file_path and output it in a new directory
+    new_direct1 = 'datasets_home1'
+    source_path1 = unzip_files(zip_file_path_1, new_direct1)
+
+    new_direct2 = 'datasets_home2'
+    source_path2 = unzip_files(zip_file_path_2, new_direct2)
+
+    # to create the list of csv file
+    csv_files_list_1 = sanity_check.convert_files_to_csv(source_path1, df_dir_name="dataframe_home")
+    csv_files_list_2 = sanity_check.convert_files_to_csv(source_path2, df_dir_name="dataframe_home")
+
+    #-------------------------------------------------------------------------#
     
     group_1 = []
     group_1_R = json.dumps(group_1)
