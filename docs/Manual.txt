@@ -1,7 +1,7 @@
 scRNAseq_Easy Manual
 
 Usage:
-scRNAseq_Easy [options] <group1_zip> <group2_zip> -o <output_path>
+scRNAseq_Easy [options] <group1_zip> <group2_zip>
 
 Options:
 -o, --output <output_path>   Optional. Specifies the path where the output graph will be saved.
