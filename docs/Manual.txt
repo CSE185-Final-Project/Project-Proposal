@@ -4,7 +4,7 @@ Usage:
 scRNAseq_Easy [options] <group1_zip> <group2_zip> -o <output_path>
 
 Options:
--o, --output <output_path>   Required. Specifies the path where the output graph will be saved.
+-o, --output <output_path> Optional. Specifies the path where the output graph will be saved.
 -v, --visual   Optional. If set, runs visualization of the correlation among datasets if set to True.
 
 Description:
@@ -15,12 +15,7 @@ and output the volcano plot.
 
 Examples:
 Without Visualization (Processes two groups by only generating the volcano plot):
-  scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png
-With Visualization:
+  scRNAseq_Easy path/to/group1.zip path/to/group2.zip
+With Visualization and Output Path:
   Processes two groups and generates a visualization of the correlation.
   scRNAseq_Easy path/to/group1.zip path/to/group2.zip -v -o path/to/output/graph.png
-
-Help:
-  To display the help message and usage information:
-  scRNAseq_Easy --help
-
