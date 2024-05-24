@@ -1,0 +1,26 @@
+scRNAseq_Easy Manual
+
+Usage:
+scRNAseq_Easy [options] <group1_zip> <group2_zip> -o <output_path>
+
+Options:
+-o, --output <output_path>   Required. Specifies the path where the output graph will be saved.
+-v, --visual   Optional. If set, runs visualization of the correlation among datasets if set to True.
+
+Description:
+  This program processes gene result files after running RSEM from two groups. 
+It will performs analysis, generates visualizations of the correlation of same type of sample datasets if user specified,
+and output the volcano plot.
+  The input files should be provided as ZIP files. All files inside the ZIP file should end with '.results'.
+
+Examples:
+Without Visualization (Processes two groups by only generating the volcano plot):
+  scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png
+With Visualization:
+  Processes two groups and generates a visualization of the correlation.
+  scRNAseq_Easy path/to/group1.zip path/to/group2.zip -v -o path/to/output/graph.png
+
+Help:
+  To display the help message and usage information:
+  scRNAseq_Easy --help
+
