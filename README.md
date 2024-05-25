@@ -1,5 +1,6 @@
 # CSE 185 scRNAseq_Easy
-`scRNAseq_Easy` is a Python project with embedded R packages, developed for CSE185. It processes STAR and RSEM result files, checks for correlation, and generates a volcano plot to show differential expression analysis.
+`scRNAseq_Easy` is a Python project with embedded R packages, developed for CSE185. It processes STAR and RSEM result files, checks for correlations, and generates a volcano plot to show differential expression analysis.
+The scRNAseq_Easy project will output the results that users specify. Specifically, users can choose to output the Pearson correlation result, the CSV file generated after running the DESeq2 R package, and a volcano plot. These outputs are conditional upon successfully passing the packages/sanity_check.py script.
 
 # Installation instructions
 
@@ -69,5 +70,9 @@ And example final projects come from last year:
 Please submit a pull request with any corrections or suggestions. Thank you!
 
 # Testing
-
+we store test file in `dataset/test_file/*`. In order to test whether our code work or not, we will run our code on the file store inside.
+defaut:
+>```
+>scRNAseq_Easy dataset/test_file/baby_HFD_Rep.zip dataset/test_file/baby_Chow_Rep.zip [options]
+>```
 
