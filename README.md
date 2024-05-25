@@ -70,7 +70,7 @@ And example final projects come from last year:
 Please submit a pull request with any corrections or suggestions. Thank you!
 
 # Testing
-we store test file in `dataset/test_file/*`. In order to test whether our code work or not, we will run our code on the file store inside.
+We store test file in `dataset/test_file/*`. In order to test whether our code work or not, we will run our code on the file store inside.
 defaut:
 >```
 >scRNAseq_Easy dataset/test_file/baby_HFD_Rep.zip dataset/test_file/baby_Chow_Rep.zip [options]
