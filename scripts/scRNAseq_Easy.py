@@ -7,6 +7,7 @@ import json
 from pkg_resources import resource_filename
 import packages.R_prep as dp
 import sanity_check
+import correlation
 
 
 # this method unzip file into a new directory
@@ -71,8 +72,13 @@ def main():
     csv_files_list_2 = sanity_check.convert_files_to_csv(source_path2, df_dir_name="dataframe_home")
 
 
+    #----------------------------------correlation(Sicheng)---------------------------------------#
+    
+    group_1_df = []
+    group_2_df = []
+    correlation(group_1_df, group_2_df)
+    
     #-------------------------------------------------------------------------#
-
 
     group_1 = []
     group_1_R = json.dumps(group_1)
