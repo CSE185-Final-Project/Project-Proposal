@@ -15,7 +15,7 @@ Alternatively, install directly from GitHub:
 pip install git+https://github.com/yourusername/SCRNASEQ_EASY.git
 ```
 
-if the install was successful, you can type `scRNAseq_Easy help` to view the user manual.  
+If the install was successful, you can type `scRNAseq_Easy help` to view the user manual.  
 
 # Basic usage
 The basic usage of `scRNAseq_Easy` is:
