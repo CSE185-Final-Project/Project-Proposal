@@ -31,8 +31,8 @@ def print_manual():
 
 def main():
     parser = argparse.ArgumentParser(description="Process gene result files and generate visualizations.")
-    parser.add_argument('group1_zip', type=str, help='Path to the first zip file.')
-    parser.add_argument('group2_zip', type=str, help='Path to the second zip file.')
+    parser.add_argument('group1_zip', type=str, nargs= "?", help='Path to the first zip file.')
+    parser.add_argument('group2_zip', type=str, nargs= "?", help='Path to the second zip file.')
     parser.add_argument('-o', '--output', type=str, help='Path to save the output graph.')
     parser.add_argument('-v', '--visual', action='store_true', help='Run visualization of correlation if set to True.')
     
@@ -45,6 +45,7 @@ def main():
 
     # Ensure all required arguments are provided
     if not args.group1_zip or not args.group2_zip or not args.output:
+        print("error: the following arguments are required to run the main function: group1_zip, group2_zip, -o/--output")
         print_manual()
         return
 
