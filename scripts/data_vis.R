@@ -12,7 +12,7 @@ data_2_v <- fromJSON(data2)
 files <- c(data_1_v, data_2_v)
 num_samples <- length(data_1_v)
 
-for (files in data_1_v) {
+for (file in data_1_v) {
   print(file)
 }
 # conditions <- c(rep("Group1", num_samples), rep("Group2", num_samples))
