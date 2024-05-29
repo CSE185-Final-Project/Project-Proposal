@@ -45,11 +45,11 @@ def correlation(group1_name, group2_name):
     for i in range(0, len(tpm_group2) - 1):
         for j in range(i+1, len(tpm_group2)):
             if len(tpm_group2[i]) == len(tpm_group2[j]):
-                res = stats.pearsonr(tpm_group2[i], tpm_group2[j])
+                res = stats.pearsonr(tpm_group2[i], tpm_group2[j], , alternative= "two-sided", method = None)
                 print("----------- Second Group Pearson Correlation Results -----------")
                 print("Sample size of Group 2 input %d: %d" % (i+1, len(tpm_group2[i])))
                 print("Sample size of Group 2 input %d: %d" % (j+1, len(tpm_group2[j])))
-                print("Group 2 input %d vs. Group 2 input %d: %.4f" % (i+1, j+1, res[0]))
+                print("Correlation of Group 2 input %d vs. Group 2 input %d: %.4f" % (i+1, j+1, res[0]))
                 if res[0] < 0.3: # Adjustment may be needed.
                     print("WARNING: The Pearson correlation result is below 0.3. You may want to check the quality of the input files.")
                 print("P-value: %.4f " % (res[1]))
