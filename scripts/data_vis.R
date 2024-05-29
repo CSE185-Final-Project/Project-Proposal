@@ -70,6 +70,7 @@ df <- results(ddsTxi)
 df <- as.data.frame(df)
 if (deseq2 == "True") {
   write.csv(df, file = paste0(output_path, "/result_deseq2.png"), row.names = FALSE)
+  return()
 }
 df$diffexpressed <- "NO"
 df$diffexpressed[df$log2FoldChange > fod & df$padj < p_value] <- "UP"
