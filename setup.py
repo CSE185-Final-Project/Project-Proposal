@@ -9,7 +9,8 @@ setup(
         '': ['docs/manual.txt', 'scripts/data_vis.R'],
     },
     install_requires=[
-        'pandas', 'scipy'
+        'pandas', 
+        'scipy >= 1.13'
     ],
     entry_points={
         'console_scripts': [
