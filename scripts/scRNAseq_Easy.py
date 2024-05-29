@@ -143,8 +143,12 @@ def main():
     #  Pass processed data and output path to the R script
     if args.visual:
         deseq2 = str(args.deseq2)
+        p_value = str(args.p_value)
+        fod =str(args.fod)
+        filter = str(args.filter)
+        name = str(args.name)
         r_script_path = resource_filename(__name__, '../scripts/data_vis.R')
-        dp.run_r_script(group_1_R, group_2_R, args.output, args.p_value, args.fod, args.filter, args.name, deseq2, r_script_path)
+        dp.run_r_script(group_1_R, group_2_R, args.output, p_value, fod, filter, name, deseq2, r_script_path)
     else:
         print("Visualization is skipped as -v or --visual flag is not set.")
 
