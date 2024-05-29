@@ -9,7 +9,7 @@ setup(
         '': ['docs/manual.txt', 'scripts/data_vis.R'],
     },
     install_requires=[
-        'pandas',
+        'pandas', 'math', 'scipy', 'csv', 'zipfile'
     ],
     entry_points={
         'console_scripts': [
