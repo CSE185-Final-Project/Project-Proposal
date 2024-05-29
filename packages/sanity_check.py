@@ -58,14 +58,101 @@ def convert_files_to_csv(source_dir, df_dir_name="dataframe_home"):
 
 # check if all files have the same header, and create dataframe for it. 
 # Only keep the first 7 columns
-def check_header():
-    return
+def create_df(file_path):
+    df = pd.read_csv(file_path, delimiter='\t')
+    df_trimmed = df.iloc[:, :7]
+    return df_trimmed
+
+def check_header(df_dict):
+    if not df_dict:
+        print("The dictionary is empty.")
+        return False
+
+    header_example = next(iter(df_dict.values())).columns
+
+    for df in df_dict.values():
+        if not df.columns.equals(header_example):
+            print('The given files have different headers')
+            return False
+        
+    print('Pass header check')
+    return True
 
 # check if gene_id is the same:
-def check_gene_id():
-    return
+def check_gene_id(df_dict):
+
+    if not df_dict:
+        print("The dictionary is empty.")
+        return False
+    
+    df_iterator = iter(df_dict.values())
+    try:
+        gene_id_example = next(df_iterator)['gene_id']
+    except KeyError:
+        print('gene id column not found')
+        return False  
+
+    # Iterate through the remaining DataFrames
+    for df in df_iterator:
+        try:
+            if not df['gene_id'].equals(gene_id_example):
+                print('The given files have different gene IDs')
+                return False
+        except KeyError:
+            print('gene id column not found in one of the DataFrames')
+            return False
+        
+    print('Pass Gene ID check')
+    return True
 
 # check if there are null inside:
-def check_null():
-    return
+def check_null(df_dict):
 
+    for df in df_dict.values():
+
+        if df.isnull().any().any():
+            print('There is null value in the given file')
+            return False       
+    else:
+        return True 
+    
+# output two list of dataframe for pearson correlation
+def split_dfs(df_dict, x):
+    group1_df = []  
+    group2_df = [] 
+    
+    for index, df in enumerate(df_dict.values()):
+        if index < x:
+            group1_df.append(df)  
+        else:
+            group2_df.append(df)  
+    
+    return group1_df, group2_df
+
+def dataframes_to_csv(list_group1, list_group2, output_dir):
+     # create output directory if it does not exist
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir) 
+
+    def save_df_to_csv(df, file_name):
+        path = os.path.join(output_dir, file_name)
+        df.to_csv(path, index=False)  
+        return path
+
+    # Initialize a list to store file paths
+    group1_path = []
+    group2_path = []
+
+    # Process the first list of DataFrames
+    for i, df in enumerate(list_group1, 1):  # Start enumeration at 1 for file naming
+        file_name = f"group1_df{i}.csv"
+        path = save_df_to_csv(df, file_name)
+        group1_path.append(path)
+
+    # Process the second list of DataFrames
+    for i, df in enumerate(list_group2, 1):  # Start enumeration at 1 for file naming
+        file_name = f"group2_df{i}.csv"
+        path = save_df_to_csv(df, file_name)
+        group2_path.append(path)
+
+    return group1_path, group2_path
