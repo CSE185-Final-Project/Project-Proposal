@@ -56,13 +56,13 @@ for (i in 1:num_samples_2) {
 samples <- data.frame("run" = c(group_1, group_2), "condition"  = conditions)
 names(files) <- samples$run
 
-txi <- tximport(files, type="rsem")
+cat("finish building dataframe")
+txi <- tximport(files, type="rsem", importer = TRUE)
 txi$length[txi$length == 0] <- 1
 ddsTxi <- DESeqDataSetFromTximport(txi,
                                    colData = samples,
                                    design = ~ condition)
 
-# TODO
 keep <- rowSums(counts(ddsTxi) >= filter) >= smallestGroupSize
 ddsTxi <- ddsTxi[keep,]
 ddsTxi <- DESeq(ddsTxi)
