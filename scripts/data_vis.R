@@ -34,6 +34,8 @@ filter <- as.numeric(args[6])
 name <- args[7]
 name <- trimws(name)
 
+deseq2 <- args[8]
+
 data_1_v <- fromJSON(data1)
 data_2_v <- fromJSON(data2)
 files <- c(data_1_v, data_2_v)
@@ -66,6 +68,9 @@ ddsTxi <- ddsTxi[keep,]
 ddsTxi <- DESeq(ddsTxi)
 df <- results(ddsTxi)
 df <- as.data.frame(df)
+if (deseq2 == "True") {
+  write.csv(df, file = paste0(output_path, "/result_deseq2.png"), row.names = FALSE)
+}
 df$diffexpressed <- "NO"
 df$diffexpressed[df$log2FoldChange > fod & df$padj < p_value] <- "UP"
 df$diffexpressed[df$log2FoldChange < fod & df$padj < p_value] <- "DOWN"

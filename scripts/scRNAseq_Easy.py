@@ -34,7 +34,9 @@ def main():
     parser.add_argument('group1_zip', type=str, nargs= "?", help='Path to the first zip file.')
     parser.add_argument('group2_zip', type=str, nargs= "?", help='Path to the second zip file.')
     parser.add_argument('-o', '--output', type=str, help='Path to save the output graph.')
-    parser.add_argument('-v', '--visual', action='store_true', help='Run visualization of correlation if set to True.')
+    parser.add_argument('-p', '--pearson', action='store_true', help='Run Pearson Correlation if set to True.')
+    parser.add_argument('-v', '--visual', action='store_true', help='Run visualization of differential equation if set to True.')
+    parser.add_argument('-d', '--deseq2', action='store_true', help='Return analyize result from Deseq2 if set to True.')
     parser.add_argument('-p_value','--p_value', type=float, default=0.05, help='Set p-value threshold for visualization.')
     parser.add_argument('-fod', '--fod', type=float, default=1, help='Set FOD value for visualization.')
     parser.add_argument('-filter', '--filter', type=float, default=0, help='filter the genes with count lower than')
@@ -63,6 +65,7 @@ def main():
 
     # if there are not the same amount of files in zip file path, then end the program
     if not sanity_check.check_if_same_amount_of_files(zip_file_1_file_count, zip_file_2_file_count):
+        print(f"Requires same ammount of files within two zip files. Got {zip_file_1_file_count} files and {zip_file_2_file_count} files")
         return
     
     # unzip two input zip_file_path and output it in a new directory
@@ -119,22 +122,19 @@ def main():
 
 
     #----------------------------------correlation(Sicheng)---------------------------------------#
-    
-    # group_1_df = []
-    # group_2_df = []
+
     correlation(group_1_df, group_2_df)
     
     #---------------------------------------------------------------------------------------------#
 
-    group_1 = []
-    group_1_R = json.dumps(group_1)
-    group_2 = []
-    group_2_R = json.dumps(group_2)
+    group_1_R = json.dumps(group_1_path)
+    group_2_R = json.dumps(group_2_path)
 
     #  Pass processed data and output path to the R script
     if args.visual:
+        deseq2 = str(args.deseq2)
         r_script_path = resource_filename(__name__, '../scripts/data_vis.R')
-        dp.run_r_script(group_1_R, group_2_R, args.output, args.p_value, args.fod, args.filter, args.name, r_script_path)
+        dp.run_r_script(group_1_R, group_2_R, args.output, args.p_value, args.fod, args.filter, args.name, deseq2, r_script_path)
     else:
         print("Visualization is skipped as -v or --visual flag is not set.")
 
