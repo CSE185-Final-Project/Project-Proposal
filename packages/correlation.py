@@ -26,11 +26,12 @@ def correlation(group1_name, group2_name):
         tpm_group2[i] = [math.log10(float(x) + 1) for x in tpm_group2[i]]
 
     # Generate correlations
+    print("----------- First Group Pearson Correlation Results -----------")
     for i in range(0, len(tpm_group1)-1):
         for j in range(i+1, len(tpm_group1)):
             if len(tpm_group1[i]) == len(tpm_group1[j]):
+                #res = stats.pearsonr(tpm_group1[i], tpm_group1[j], alternative="less", method=None)
                 res = stats.pearsonr(tpm_group1[i], tpm_group1[j], alternative= "two-sided", method = None)
-                print("----------- First Group Pearson Correlation Results -----------")
                 print("Sample size of Group 1 input %d: %d" % (i+1, len(tpm_group1[i])))
                 print("Sample size of Group 1 input %d: %d" % (j+1, len(tpm_group1[j])))
                 print("Correlation of Group 1 input %d vs. Group 1 input %d: %.4f" % (i+1, j+1, res[0]))
@@ -39,14 +40,17 @@ def correlation(group1_name, group2_name):
                 print("P-value: %.4f " % (res[1]))
                 print("Significant level: P < %.4f" % (stats.norm.sf(abs(res[0]))))
                 print("95%", res.confidence_interval(confidence_level=0.95), "for correlation")
+                print("")
             else:
                 print("WARNING: Group 1 input %d file and Group 1 input %d file don't have the same sample size, so cannot calculate Pearson correlation." % (i+1, j+1))
 
+    print("")
+    print("----------- Second Group Pearson Correlation Results -----------")
     for i in range(0, len(tpm_group2) - 1):
         for j in range(i+1, len(tpm_group2)):
             if len(tpm_group2[i]) == len(tpm_group2[j]):
+                #res = stats.pearsonr(tpm_group1[i], tpm_group1[j], alternative="less", method=None)
                 res = stats.pearsonr(tpm_group2[i], tpm_group2[j], alternative= "two-sided", method = None)
-                print("----------- Second Group Pearson Correlation Results -----------")
                 print("Sample size of Group 2 input %d: %d" % (i+1, len(tpm_group2[i])))
                 print("Sample size of Group 2 input %d: %d" % (j+1, len(tpm_group2[j])))
                 print("Correlation of Group 2 input %d vs. Group 2 input %d: %.4f" % (i+1, j+1, res[0]))
@@ -55,6 +59,8 @@ def correlation(group1_name, group2_name):
                 print("P-value: %.4f " % (res[1]))
                 print("Significant level: P < %.4f" % (stats.norm.sf(abs(res[0]))))
                 print("95%", res.confidence_interval(confidence_level=0.95), "for correlation")
+                print("")
             else:
                 print("WARNING: Group 2 input %d file and Group 2 input %d file don't have the same sample size, so cannot calculate Pearson correlation." % (i+1, j+1))
+
 
