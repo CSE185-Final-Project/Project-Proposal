@@ -14,6 +14,10 @@ Alternatively, install directly from GitHub:
 ```
 pip install git+https://github.com/yourusername/SCRNASEQ_EASY.git
 ```
+Export to your local path (needed if you're using class Juypter Notebook server or if you don't have root authorization)
+```
+export PATH="$HOME/.local/bin:$PATH"
+```
 
 If the install was successful, you can type `scRNAseq_Easy help` to view the user manual.  
 
