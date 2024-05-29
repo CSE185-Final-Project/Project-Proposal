@@ -73,16 +73,55 @@ def main():
     source_path2 = unzip_files(zip_file_path_2, new_direct2)
 
     # to create the list of csv file
-    csv_files_list_1 = sanity_check.convert_files_to_csv(source_path1, df_dir_name="dataframe_home")
-    csv_files_list_2 = sanity_check.convert_files_to_csv(source_path2, df_dir_name="dataframe_home")
+    csv_files_list1 = sanity_check.convert_files_to_csv(source_path1, df_dir_name="dataframe_home")
+    csv_files_list2 = sanity_check.convert_files_to_csv(source_path2, df_dir_name="dataframe_home")
 
+    df_dict = {}
+    increment = len(csv_files_list1)
+    for i in range(len(csv_files_list1)):
+        digit = i + 1
+        name = f'df_trimmed{digit}'
+        file_path = csv_files_list1[i]
+        df_dict[name] = sanity_check.create_df(file_path)
+
+    for i in range(len(csv_files_list2)):
+        digit = i + 1 + increment
+        name = f'df_trimmed{digit}'
+        file_path = csv_files_list2[i]
+        df_dict[name] = sanity_check.create_df(file_path)
+    # now the df_dict will have {df_1: the real trimmed dataframe}
+        
+    # if there are not the same header line, then end the program
+    if not sanity_check.check_header(df_dict):
+        return
+    
+    # gene id check
+    if not sanity_check.check_gene_id(df_dict):
+        return 
+    
+    # null element check
+    if not sanity_check.check_null(df_dict):
+        return
+    
+    # for pearson correlation to take in, two list of dataframe
+    group_1_df, group_2_df = sanity_check.split_dfs(df_dict, increment)
+
+
+    current_directory = os.getcwd()
+    subdirectory = 'trimmed_csv_files'
+    output_dir_csv = os.path.join(current_directory, subdirectory)
+    if not os.path.exists(output_dir_csv):
+        os.makedirs(output_dir_csv)
+    # for R package to use, two list of csv file paths
+    group_1_path, group_2_path = sanity_check.dataframes_to_csv(group_1_df, group_2_df, output_dir_csv)
+        
     #--------------------------------------------------------------------------#
 
 
     #----------------------------------correlation(Sicheng)---------------------------------------#
     
-    group_1_df = []
-    group_2_df = []
+    # group_1_df = []
+    # group_2_df = []
     correlation(group_1_df, group_2_df)
     
     #---------------------------------------------------------------------------------------------#
