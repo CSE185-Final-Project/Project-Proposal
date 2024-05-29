@@ -7,7 +7,7 @@ import json
 from pkg_resources import resource_filename
 import packages.R_prep as dp
 import packages.sanity_check as sanity_check
-import packages.correlation as correlation
+import packages.correlation as corr
 
 
 # this method unzip file into a new directory
@@ -131,7 +131,7 @@ def main():
     #----------------------------------correlation(Sicheng)---------------------------------------#
 
     if args.pearson or args.visual:
-        correlation(group_1_df, group_2_df)
+        corr.correlation(group_1_df, group_2_df)
     else:
         print("Calculating Pearson Correlation is skipped as -p or --pearson flag is not set.")
     
