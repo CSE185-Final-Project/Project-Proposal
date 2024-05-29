@@ -12,7 +12,7 @@ pip install .
 ```
 Alternatively, install directly from GitHub:
 ```
-pip install git+https://github.com/yourusername/SCRNASEQ_EASY.git
+pip install git+https://github.com/CSE185-Final-Project/scRNAseq_Easy.git
 ```
 Export to your local path (needed if you're using class Juypter Notebook server or if you don't have root authorization)
 ```
