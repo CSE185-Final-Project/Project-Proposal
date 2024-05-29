@@ -70,9 +70,11 @@ def main():
     
     # unzip two input zip_file_path and output it in a new directory
     new_direct1 = 'datasets_home1'
+    sanity_check.delete_files_in_directory(new_direct1)
     source_path1 = unzip_files(zip_file_path_1, new_direct1)
 
     new_direct2 = 'datasets_home2'
+    sanity_check.delete_files_in_directory(new_direct2)
     source_path2 = unzip_files(zip_file_path_2, new_direct2)
 
     # to create the list of csv file
@@ -106,17 +108,22 @@ def main():
     if not sanity_check.check_null(df_dict):
         return
     
+    print('Pass all sanity check!')
     # for pearson correlation to take in, two list of dataframe
     group_1_df, group_2_df = sanity_check.split_dfs(df_dict, increment)
 
 
     current_directory = os.getcwd()
     subdirectory = 'trimmed_csv_files'
+    sanity_check.delete_files_in_directory(subdirectory)
     output_dir_csv = os.path.join(current_directory, subdirectory)
     if not os.path.exists(output_dir_csv):
         os.makedirs(output_dir_csv)
     # for R package to use, two list of csv file paths
     group_1_path, group_2_path = sanity_check.dataframes_to_csv(group_1_df, group_2_df, output_dir_csv)
+    df_dict = {} #clear our df_dict
+    csv_files_list1 = []
+    csv_files_list2 = []
         
     #--------------------------------------------------------------------------#
 

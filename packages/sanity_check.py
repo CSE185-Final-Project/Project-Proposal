@@ -59,7 +59,7 @@ def convert_files_to_csv(source_dir, df_dir_name="dataframe_home"):
 # check if all files have the same header, and create dataframe for it. 
 # Only keep the first 7 columns
 def create_df(file_path):
-    df = pd.read_csv(file_path, delimiter='\t')
+    df = pd.read_csv(file_path, delimiter=',')
     df_trimmed = df.iloc[:, :7]
     return df_trimmed
 
@@ -86,14 +86,17 @@ def check_gene_id(df_dict):
         return False
     
     df_iterator = iter(df_dict.values())
+
     try:
         gene_id_example = next(df_iterator)['gene_id']
+        # print(gene_id_example)
     except KeyError:
-        print('gene id column not found')
+        print('Column gene_id not found')
         return False  
 
     # Iterate through the remaining DataFrames
     for df in df_iterator:
+        # print(df['gene_id'])
         try:
             if not df['gene_id'].equals(gene_id_example):
                 print('The given files have different gene IDs')
@@ -114,6 +117,7 @@ def check_null(df_dict):
             print('There is null value in the given file')
             return False       
     else:
+        print('Pass null check')
         return True 
     
 # output two list of dataframe for pearson correlation
@@ -156,3 +160,15 @@ def dataframes_to_csv(list_group1, list_group2, output_dir):
         group2_path.append(path)
 
     return group1_path, group2_path
+
+def delete_files_in_directory(directory):
+    # Check if the directory exists
+    if not os.path.exists(directory):
+        return 
+    
+    # List all items in the directory
+    for item in os.listdir(directory):
+        item_path = os.path.join(directory, item)
+        # Check if the item is a file and then delete it
+        if os.path.isfile(item_path):
+            os.remove(item_path)  # Remove the file
