@@ -130,7 +130,10 @@ def main():
 
     #----------------------------------correlation(Sicheng)---------------------------------------#
 
-    correlation(group_1_df, group_2_df)
+    if args.pearson:
+        correlation(group_1_df, group_2_df)
+    else:
+        print("Calculating Pearson Correlation is skipped as -p or --pearson flag is not set.")
     
     #---------------------------------------------------------------------------------------------#
 
