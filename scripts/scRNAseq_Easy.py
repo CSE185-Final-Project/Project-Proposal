@@ -77,6 +77,9 @@ def main():
     sanity_check.delete_files_in_directory(new_direct2)
     source_path2 = unzip_files(zip_file_path_2, new_direct2)
 
+    new_group1_unzip_file_path = sanity_check.unzip_files_path(source_path1)
+    new_group2_unzip_file_path = sanity_check.unzip_files_path(source_path2)
+
     # to create the list of csv file
     csv_files_list1 = sanity_check.convert_files_to_csv(source_path1, df_dir_name="dataframe_home")
     csv_files_list2 = sanity_check.convert_files_to_csv(source_path2, df_dir_name="dataframe_home")
@@ -137,8 +140,8 @@ def main():
     
     #---------------------------------------------------------------------------------------------#
 
-    group_1_R = json.dumps(group_1_path)
-    group_2_R = json.dumps(group_2_path)
+    group_1_R = json.dumps(new_group1_unzip_file_path)
+    group_2_R = json.dumps(new_group2_unzip_file_path)
 
     #  Pass processed data and output path to the R script
     if args.visual:
