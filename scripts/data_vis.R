@@ -86,8 +86,9 @@ if (name == "NO") {
   df$delabel <- ifelse(df$Name %in% head(df[order(df$padj), "Name"], 30), df$Name, NA)
 }
 p <-ggplot(data = df, aes(x = log2FoldChange, y = -log10(padj), col = diffexpressed, label = delabel)) +
-  geom_vline(xintercept = 0, col = "gray", linetype = 'dashed') +
-  geom_hline(yintercept = -log10(0.05), col = "gray", linetype = 'dashed') + 
+  geom_vline(xintercept = -fod, col = "gray", linetype = 'dashed') +
+  geom_vline(xintercept = fod, col = "gray", linetype = 'dashed') +
+  geom_hline(yintercept = -log10(p_value), col = "gray", linetype = 'dashed') + 
   geom_point(size = 1) + 
   scale_color_manual(values = c("#00AFBB", "grey", "#bb0c00"),
                      labels = c("Downregulated", "Not significant", "Upregulated")) +
