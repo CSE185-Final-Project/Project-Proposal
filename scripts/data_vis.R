@@ -71,7 +71,7 @@ df <- as.data.frame(df)
 write.csv(df, file = paste0(output_path, "/result_deseq2.csv"), row.names = FALSE)
 if (deseq2 == "True") {
   cat("Visualization is skipped because -d is present\n")
-  return()
+  quit()
 }
 df$diffexpressed <- "NO"
 df$diffexpressed[df$log2FoldChange > fod & df$padj < p_value] <- "UP"
