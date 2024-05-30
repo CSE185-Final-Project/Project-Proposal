@@ -56,7 +56,7 @@ for (i in 1:num_samples_2) {
 samples <- data.frame("run" = c(group_1, group_2), "condition"  = conditions)
 names(files) <- samples$run
 
-cat("finish building dataframe")
+
 txi <- tximport(files, type = "rsem")
 txi$length[txi$length == 0] <- 1
 ddsTxi <- DESeqDataSetFromTximport(txi,
@@ -68,8 +68,9 @@ ddsTxi <- ddsTxi[keep,]
 ddsTxi <- DESeq(ddsTxi)
 df <- results(ddsTxi)
 df <- as.data.frame(df)
+write.csv(df, file = paste0(output_path, "/result_deseq2.csv"), row.names = FALSE)
 if (deseq2 == "True") {
-  write.csv(df, file = paste0(output_path, "/result_deseq2.png"), row.names = FALSE)
+  cat("Visualization is skipped because -d is present\n")
   return()
 }
 df$diffexpressed <- "NO"

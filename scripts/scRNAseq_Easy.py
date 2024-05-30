@@ -151,7 +151,7 @@ def main():
     group_2_R = json.dumps(group2_genes_results_path)
 
     #  Pass processed data and output path to the R script
-    if args.visual:
+    if args.visual or args.deseq2:
         deseq2 = str(args.deseq2)
         p_value = str(args.p_value)
         fod =str(args.fod)
