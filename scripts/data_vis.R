@@ -57,7 +57,7 @@ samples <- data.frame("run" = c(group_1, group_2), "condition"  = conditions)
 names(files) <- samples$run
 
 cat("finish building dataframe")
-txi <- tximport(files, type="rsem", importer = TRUE)
+txi <- tximport(files, type = "rsem")
 txi$length[txi$length == 0] <- 1
 ddsTxi <- DESeqDataSetFromTximport(txi,
                                    colData = samples,
