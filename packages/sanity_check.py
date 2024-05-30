@@ -1,6 +1,4 @@
-import sys
 import zipfile
-import csv
 import os
 import pandas as pd
 
@@ -181,4 +179,18 @@ def unzip_files_path(abs_path):
         if os.path.isfile(item_path):
             unzip_file_path_results.append(item_path)
     return unzip_file_path_results
+
+
+def ensure_genes_results(file_paths):
+    updated_paths = []
+    for path in file_paths:
+        directory, filename = os.path.split(path)
+        if filename.endswith('.txt'):
+            base_name = filename[:-4].split('.')[0]
+        else:
+            base_name = filename.split('.')[0]
+        new_filename = f"{base_name}.genes.results"
+        new_path = os.path.join(directory, new_filename)
+        updated_paths.append(new_path) 
+    return updated_paths
 
