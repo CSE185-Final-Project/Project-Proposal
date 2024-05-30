@@ -172,3 +172,13 @@ def delete_files_in_directory(directory):
         # Check if the item is a file and then delete it
         if os.path.isfile(item_path):
             os.remove(item_path)  # Remove the file
+
+#
+def unzip_files_path(abs_path):
+    unzip_file_path_results = []
+    for item in os.listdir(abs_path):
+        item_path = os.path.join(abs_path, item)
+        if os.path.isfile(item_path):
+            unzip_file_path_results.append(item_path)
+    return unzip_file_path_results
+
