@@ -182,15 +182,21 @@ def unzip_files_path(abs_path):
 
 
 def ensure_genes_results(file_paths):
+
     updated_paths = []
     for path in file_paths:
         directory, filename = os.path.split(path)
+        parts = filename.split('.')
+        if filename.endswith('.genes.results') and len(parts) == 3 and parts[0] != 'RSEM':
+            updated_paths.append(path)
+            continue
         if filename.endswith('.txt'):
             base_name = filename[:-4].split('.')[0]
         else:
             base_name = filename.split('.')[0]
         new_filename = f"{base_name}.genes.results"
         new_path = os.path.join(directory, new_filename)
-        updated_paths.append(new_path) 
+        updated_paths.append(new_path)
+    
     return updated_paths
 
