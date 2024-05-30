@@ -75,15 +75,17 @@ if (deseq2 == "True") {
 }
 df$diffexpressed <- "NO"
 df$diffexpressed[df$log2FoldChange > fod & df$padj < p_value] <- "UP"
-df$diffexpressed[df$log2FoldChange < fod & df$padj < p_value] <- "DOWN"
+df$diffexpressed[df$log2FoldChange < -fod & df$padj < p_value] <- "DOWN"
 df$X <- row.names(df)
 if (name == "NO") {
-  df$delabel <- ifelse(df$X %in% head(df[order(df$padj), "X"], 30), df$X, NA)
+  top_30_names <- head(df[order(df$padj), "X"], 30)
+  df$delabel <- ifelse(df$X %in% top_30_names & df$diffexpressed != "NO", df$X, NA)
 } else {
   df_name <- read.csv(name, header = FALSE, sep = "\t")
   colnames(df_name) <- c("X", "Name")
   df <- merge(df, df_name, by = "X", all.x = TRUE)
-  df$delabel <- ifelse(df$Name %in% head(df[order(df$padj), "Name"], 30), df$Name, NA)
+  top_30_names <- head(df[order(df$padj), "Name"], 30)
+  df$delabel <- ifelse(df$Name %in% top_30_names & df$diffexpressed != "NO", df$Name, NA)
 }
 p <-ggplot(data = df, aes(x = log2FoldChange, y = -log10(padj), col = diffexpressed, label = delabel)) +
   geom_vline(xintercept = -fod, col = "gray", linetype = 'dashed') +
