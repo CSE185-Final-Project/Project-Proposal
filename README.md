@@ -37,8 +37,8 @@ The paths to two zip files are only required inputs for `scRNAseq_Easy`. Users m
 * `<group1_zip>`, `<group2_zip>`  Required. The path to two zipped files containing aligned and quantified gene reads processed by STAR and RSEM.       
 * `-o`, `--output <output_path>`   Optional. Specifies the path where the output graph will be saved.
 * `-p`, `--pearson` Optional. If set, check the Pearson correlation for the data within the group and stop the program.
-* `-d`, `--DESeq2 [-filter int]` Optional. If set, pass all the files to DESeq2 to process and stop. The result will be saved in the output path if set. The result will be filtered by removing the genes with a count lower than `filter`, default `filter = 0`.  Note: Automatically check Pearson correlation.
-* `-v`, `--visual [-p-value int, - fod int, -filter int]`   Optional. If set, generate a volcano  plot of the given data. The plot will have labels Up, Down, and None based on p-value and fold-of-change(fod) inputted, default `p-value = 0.05, fod = 0`. Note: Automatically check Pearson correlation and process the data through DESeq2.
+* `-d`, `--DESeq2 [-filter int]` Optional. If set, pass all the files to DESeq2 to process and stop. The result will be saved in the output path if set. The result will be filtered by removing the genes with a count lower than `filter`, default `-filter 0`.  Note: Automatically check Pearson correlation.
+* `-v`, `--visual [-p_value int, -fod int, -filter int]`   Optional. If set, generate a volcano  plot of the given data. The plot will have labels Up, Down, and None based on p-value and fold-of-change(fod) inputted, default `-p_value 0.05 -fod 0`. Note: Automatically check Pearson correlation and process the data through DESeq2.
 * `-name`, `--name <file_path>` Optional. A two-column file without a header. The first column contains the gene ID measured, and the second column contains the corresponding gene name.
 
 Examples:\
