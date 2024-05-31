@@ -54,7 +54,7 @@ Process data through DESeq2 and filter out gene with count lower than 10:
   `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -d -filter 10`  
     
 Generate the visualization of volcano plot with p-value threshold = 0.05, fold-of-change threshold = 2 :  
-  `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png -v -p-value 0.05 -fod 2`
+  `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png -v -p_value 0.05 -fod 2`
 
 # File format
 `-d` option will generate a csv file containing the result dataframe processed by DESeq2, deliminator = ','\
