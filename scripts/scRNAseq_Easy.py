@@ -181,8 +181,8 @@ def main():
     elapsed_time = end_time - start_time
     print(f"Elapsed time: {elapsed_time:.2f} seconds")
     print(f"Peak memory usage: {peak / 10**6:.2f} MB")
-    print(f"Memory usage before: {mem_usage_before[0]} MB")
-    print(f"Memory usage after: {mem_usage_after[0]} MB")
+    print(f"Memory usage before: {mem_usage_before} MB")
+    print(f"Memory usage after: {mem_usage_after} MB")
 
 if __name__ == "__main__":
     main()
