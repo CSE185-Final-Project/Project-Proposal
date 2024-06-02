@@ -1,2 +1,2 @@
-include docs/manual.txt
+include docs/Manual.txt
 include scripts/data_vis.R
