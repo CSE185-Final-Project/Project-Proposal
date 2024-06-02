@@ -28,7 +28,7 @@ def unzip_files(zip_file, extract_to_new_dir):
     return abs_path
 
 def print_manual():
-    manual_path = resource_filename(__name__, '../docs/Manual.txt')
+    manual_path = resource_filename(__name__, '../docs/manual.txt')
     with open(manual_path, 'r') as f:
         manual_content = f.read()
     print(manual_content)
