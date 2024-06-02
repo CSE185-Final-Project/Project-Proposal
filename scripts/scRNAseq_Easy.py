@@ -8,6 +8,10 @@ from pkg_resources import resource_filename
 import packages.R_prep as dp
 import packages.sanity_check as sanity_check
 import packages.correlation as corr
+import time
+import tracemalloc
+from memory_profiler import memory_usage
+from pkg_resources import resource_filename
 
 
 # this method unzip file into a new directory
@@ -54,6 +58,12 @@ def main():
         print("error: the following arguments are required to run the main function: group1_zip, group2_zip, -o/--output")
         print_manual()
         return
+    
+    # Benchmarking start
+    start_time = time.time()
+    tracemalloc.start()
+
+    mem_usage_before = memory_usage(max_usage=True)
 
     #-------------------------sanity_check (zhqian)---------------------------#
 
@@ -161,6 +171,18 @@ def main():
         dp.run_r_script(group_1_R, group_2_R, args.output, p_value, fod, filter, name, deseq2, r_script_path)
     else:
         print("Visualization is skipped as -v or --visual flag is not set.")
+    
+    # Benchmarking end
+    end_time = time.time()
+    current, peak = tracemalloc.get_traced_memory()
+    tracemalloc.stop()
+    mem_usage_after = memory_usage(max_usage=True)
+
+    elapsed_time = end_time - start_time
+    print(f"Elapsed time: {elapsed_time:.2f} seconds")
+    print(f"Peak memory usage: {peak / 10**6:.2f} MB")
+    print(f"Memory usage before: {mem_usage_before[0]} MB")
+    print(f"Memory usage after: {mem_usage_after[0]} MB")
 
 if __name__ == "__main__":
     main()

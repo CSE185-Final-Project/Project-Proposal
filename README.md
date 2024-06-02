@@ -24,7 +24,7 @@ If the install was successful, you can type `scRNAseq_Easy help` to view the use
 # Basic usage
 The basic usage of `scRNAseq_Easy` is:
 ```
-scRNAseq_Easy <group1_zip> <group2_zip> [options] 
+scRNAseq_Easy <group1_zip> <group2_zip> -o <output DIRECTORY> [options] 
 ```
 > **Example**: To run `scRNAseq_Easy` using example files from this repository:
 >```
@@ -35,7 +35,7 @@ scRNAseq_Easy <group1_zip> <group2_zip> [options]
 
 The paths to two zip files are only required inputs for `scRNAseq_Easy`. Users may additionally specify the options below:
 * `<group1_zip>`, `<group2_zip>`  Required. The path to two zipped files containing aligned and quantified gene reads processed by STAR and RSEM.       
-* `-o`, `--output <output_path>`   Optional. Specifies the path where the output graph will be saved.
+* `-o`, `--output <output_path>`   Required. Specifies the path where the output graph will be saved.
 * `-p`, `--pearson` Optional. If set, check the Pearson correlation for the data within the group and stop the program.
 * `-d`, `--DESeq2 [-filter int]` Optional. If set, pass all the files to DESeq2 to process and stop. The result will be saved in the output path if set. The result will be filtered by removing the genes with a count lower than `filter`, default `-filter 0`.  Note: Automatically check Pearson correlation.
 * `-v`, `--visual [-p_value int, -fod int, -filter int]`   Optional. If set, generate a volcano  plot of the given data. The plot will have labels Up, Down, and None based on p-value and fold-of-change(fod) inputted, default `-p_value 0.05 -fod 0`. Note: Automatically check Pearson correlation and process the data through DESeq2.
@@ -80,7 +80,7 @@ export PATH="$HOME/.local/bin:$PATH"
    ```
    scRNAseq_Easy HFD_Rep.zip Chow_Rep.zip -o ~/test_scRNA -v -name GRCm38.75.gene_names
    ```
-8. check the visualization plot `result_vol_plot.png` and deseq2 result `result_deseq2.png`
+8. check the visualization plot `result_vol_plot.png` and deseq2 result `result_deseq2.csv`
 9. free to modify options based on this manual 
 
 # Contributors

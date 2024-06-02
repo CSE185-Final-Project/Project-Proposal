@@ -10,7 +10,8 @@ setup(
     },
     install_requires=[
         'pandas', 
-        'scipy >= 1.13'
+        'scipy >= 1.13',
+        "memory_profiler"
     ],
     entry_points={
         'console_scripts': [
