@@ -28,7 +28,7 @@ scRNAseq_Easy <group1_zip> <group2_zip> -o <output DIRECTORY> [options]
 ```
 > **Example**: To run `scRNAseq_Easy` using example files from this repository:
 >```
->scRNAseq_Easy dataset/HFD_Rep.zip dataset/Chow_Rep.zip [options]
+>scRNAseq_Easy dataset/HFD_Rep.zip dataset/Chow_Rep.zip -o <output DIRECTORY> [options]
 >```
 
 # scRNAseq_Easy Options
@@ -100,6 +100,6 @@ Please submit a pull request with any corrections or suggestions. Thank you!
 We store test file in `dataset/test_file/*`. In order to test whether our code work or not, we will run our code on the file store inside.
 defaut:
 >```
->scRNAseq_Easy dataset/test_file/baby_HFD_Rep.zip dataset/test_file/baby_Chow_Rep.zip [options]
+>scRNAseq_Easy dataset/test_file/baby_HFD_Rep.zip dataset/test_file/baby_Chow_Rep.zip -o <output DIRECTORY> [options]
 >```
 
