@@ -1,39 +1,39 @@
-# CSE 185 scRNAseq_Easy
-`scRNAseq_Easy` is a Python project with embedded R packages, developed for CSE185. It processes STAR and RSEM result files, checks for correlations, and generates a volcano plot to show differential expression analysis.
-The scRNAseq_Easy project will output the results that users specify. Specifically, users can choose to output the Pearson correlation result, the CSV file generated after running the DESeq2 R package, and a volcano plot. These outputs are conditional upon successfully passing the packages/sanity_check.py script.
+# CSE 185 RNAseq_Easy
+`RNAseq_Easy` is a Python project with embedded R packages, developed for CSE185. It processes STAR and RSEM result files, checks for correlations, and generates a volcano plot to show differential expression analysis.
+The RNAseq_Easy project will output the results that users specify. Specifically, users can choose to output the Pearson correlation result, the CSV file generated after running the DESeq2 R package, and a volcano plot. These outputs are conditional upon successfully passing the packages/sanity_check.py script.
 
 # Installation instructions
 
 Clone the repository and install the required packages using the following commands:
 ```
-git clone https://github.com/CSE185-Final-Project/scRNAseq_Easy/
-cd scRNAseq_Easy
+git clone https://github.com/CSE185-Final-Project/RNAseq_Easy/
+cd RNAseq_Easy
 pip install .
 ```
 Alternatively, install directly from GitHub:
 ```
-pip install git+https://github.com/CSE185-Final-Project/scRNAseq_Easy.git
+pip install git+https://github.com/CSE185-Final-Project/RNAseq_Easy.git
 ```
 Export to your local path (needed if you're using class Juypter Notebook server or if you don't have root authorization)
 ```
 export PATH="$HOME/.local/bin:$PATH"
 ```
 
-If the install was successful, you can type `scRNAseq_Easy help` to view the user manual.  
+If the install was successful, you can type `RNAseq_Easy help` to view the user manual.  
 
 # Basic usage
-The basic usage of `scRNAseq_Easy` is:
+The basic usage of `RNAseq_Easy` is:
 ```
-scRNAseq_Easy <group1_zip> <group2_zip> -o <output DIRECTORY> [options] 
+RNAseq_Easy <group1_zip> <group2_zip> -o <output DIRECTORY> [options] 
 ```
-> **Example**: To run `scRNAseq_Easy` using example files from this repository:
+> **Example**: To run `RNAseq_Easy` using example files from this repository:
 >```
->scRNAseq_Easy dataset/HFD_Rep.zip dataset/Chow_Rep.zip -o <output DIRECTORY> [options]
+>RNAseq_Easy dataset/HFD_Rep.zip dataset/Chow_Rep.zip -o <output DIRECTORY> [options]
 >```
 
-# scRNAseq_Easy Options
+# RNAseq_Easy Options
 
-The paths to two zip files are only required inputs for `scRNAseq_Easy`. Users may additionally specify the options below:
+The paths to two zip files are only required inputs for `RNAseq_Easy`. Users may additionally specify the options below:
 * `<group1_zip>`, `<group2_zip>`  Required. The path to two zipped files containing aligned and quantified gene reads processed by STAR and RSEM.       
 * `-o`, `--output <output_path>`   Required. Specifies the path where the output graph will be saved.
 * `-p`, `--pearson` Optional. If set, check the Pearson correlation for the data within the group and stop the program.
@@ -43,18 +43,18 @@ The paths to two zip files are only required inputs for `scRNAseq_Easy`. Users m
 
 Examples:\
 Print Manual for usage:\
-  `scRNAseq_Easy`\
+  `RNAseq_Easy`\
 or\
-  `scRNAseq_Easy help`
+  `RNAseq_Easy help`
 
 Check Pearson Correlation within group:  
-  `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -p`  
+  `RNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -p`  
     
 Process data through DESeq2 and filter out gene with count lower than 10:  
-  `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -d -filter 10`  
+  `RNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -d -filter 10`  
     
 Generate the visualization of volcano plot with p-value threshold = 0.05, fold-of-change threshold = 2 :  
-  `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png -v -p_value 0.05 -fod 2`
+  `RNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png -v -p_value 0.05 -fod 2`
 
 # File format
 `-d` option will generate a csv file containing the result dataframe processed by DESeq2, deliminator = ','\
@@ -64,21 +64,21 @@ Generate the visualization of volcano plot with p-value threshold = 0.05, fold-o
 1. Recommend to test on class Juypter Notebook Server
 2. Download and install the package by link
 ```
-pip install git+https://github.com/CSE185-Final-Project/scRNAseq_Easy.git
+pip install git+https://github.com/CSE185-Final-Project/RNAseq_Easy.git
 ```
 and export by 
 ```
 export PATH="$HOME/.local/bin:$PATH"
 ```
-3. make new directory for test `mkdir test_scRNA`
-4. set working directory `cd test_scRNA`
-5. download the test file from GitHub: https://github.com/CSE185-Final-Project/scRNAseq_Easy/
+3. make new directory for test `mkdir test_RNA`
+4. set working directory `cd test_RNA`
+5. download the test file from GitHub: https://github.com/CSE185-Final-Project/RNAseq_Easy/
    -> dataset
    -> Chow_Rep.zip, HFD_Rep.zip, GRCm38.75.gene_names
-6. upload to test_scRNA on the server
+6. upload to test_RNA on the server
 7. run command
    ```
-   scRNAseq_Easy HFD_Rep.zip Chow_Rep.zip -o ~/test_scRNA -v -name GRCm38.75.gene_names
+   RNAseq_Easy HFD_Rep.zip Chow_Rep.zip -o ~/test_RNA -v -name GRCm38.75.gene_names
    ```
 8. check the visualization plot `result_vol_plot.png` and deseq2 result `result_deseq2.csv`
 9. free to modify options based on this manual 
@@ -100,6 +100,6 @@ Please submit a pull request with any corrections or suggestions. Thank you!
 We store test file in `dataset/test_file/*`. In order to test whether our code work or not, we will run our code on the file store inside.
 defaut:
 >```
->scRNAseq_Easy dataset/test_file/baby_HFD_Rep.zip dataset/test_file/baby_Chow_Rep.zip -o <output DIRECTORY> [options]
+>RNAseq_Easy dataset/test_file/baby_HFD_Rep.zip dataset/test_file/baby_Chow_Rep.zip -o <output DIRECTORY> [options]
 >```
 
