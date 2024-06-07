@@ -26,4 +26,4 @@ The second datasets come from "**Global Transcriptome Analysis of Brown Adipose 
   * GSM3082784: LFD_BAT2.RSEM.results
   * GSM3082785: LFD_BAT3.RSEM.results
     
-**IMPORTANT: We did not find the corresponding gene name file for the second dataset. Only the dataset 1(come from lab4 by professor Gymrek has gene name file: -GRCm38.75.genes_names)**
+**IMPORTANT: We did not find the corresponding gene name file for the second dataset. Only the dataset 1(come from lab4 by professor Gymrek has gene name file: GRCm38.75.genes_names)**
