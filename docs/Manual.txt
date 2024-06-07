@@ -1,11 +1,11 @@
-scRNAseq_Easy Manual
+RNAseq_Easy Manual
 
 Usage:
-scRNAseq_Easy <group1_zip> <group2_zip> [options]
-The files within zip files must be ends with '.genes.results'. Please provide the path to these two zip files when running scRNAseq_Easy.
+RNAseq_Easy <group1_zip> <group2_zip> [options]
+The files within zip files must be ends with '.genes.results'. Please provide the path to these two zip files when running RNAseq_Easy.
 
 Options:
-The paths to two zip files are only required inputs for `scRNAseq_Easy`. Users may additionally specify the options below:
+The paths to two zip files are only required inputs for `RNAseq_Easy`. Users may additionally specify the options below:
 * `<group1_zip>`, `<group2_zip>`  Required. The path to two zipped files containing aligned and quantified gene reads processed by STAR and RSEM.       
 * `-o`, `--output <output_path>`  Required. Specifies the path where the output graph will be saved.
 * `-p`, `--pearson` Optional. If set, check the Pearson correlation for the data within the group and stop the program.
@@ -20,15 +20,15 @@ The input files should be provided as ZIP files. All files inside the ZIP file s
 
 Examples:
 Print Manual for usage:
-  `scRNAseq_Easy`
+  `RNAseq_Easy`
 or
-  `scRNAseq_Easy help`
+  `RNAseq_Easy help`
 
 Check Pearson Correlation within group:  
-  `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -p`  
+  `RNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -p`  
     
 Process data through DESeq2 and filter out gene with count lower than 10:  
-  `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -d -filter 10`  
+  `RNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/newdirectory -d -filter 10`  
     
 Generate the visualization of volcano plot with p-value threshold = 0.05, fold-of-change threshold = 2 :  
-  `scRNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png -v -p_value 0.05 -fod 2`
+  `RNAseq_Easy path/to/group1.zip path/to/group2.zip -o path/to/output/graph.png -v -p_value 0.05 -fod 2`
