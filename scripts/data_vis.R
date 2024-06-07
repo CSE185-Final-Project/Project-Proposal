@@ -68,7 +68,7 @@ ddsTxi <- ddsTxi[keep,]
 ddsTxi <- DESeq(ddsTxi)
 df <- results(ddsTxi)
 df <- as.data.frame(df)
-write.csv(df, file = paste0(output_path, "/result_deseq2.csv"), row.names = FALSE)
+write.csv(df, file = paste0(output_path, "/result_deseq2.csv"), row.names = TRUE)
 if (deseq2 == "True") {
   cat("Visualization is skipped because -d is present\n")
   quit()
